@@ -36,16 +36,43 @@ export default class RenderWithMap extends Component {
                     </div>
                 </div>
             </div>
-        })
+        });
+
         return arrJSXProduct;
+    }
+    renderTable = () => {
+        return this.productList.map((product, index) => {
+            return <tr key={index}> 
+                <td>{product.id}</td>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>
+                    <button className="text-danger">Xoá</button>
+                </td>
+            </tr>
+
+        });
     }
 
     render() {
         return (
             <div className="container">
-                <div className="row">
+                {/* <div className="row">
                     {this.renderProduct()}
-                </div>
+                </div> */}
+                <h3 className="text-center">Danh sách sản phẩm</h3>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {this.renderTable()}
+                    </tbody>
+                </table>
             </div>
 
         )
