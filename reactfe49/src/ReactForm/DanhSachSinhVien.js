@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FormSinhVien from './FormSinhVien'
 import { connect } from 'react-redux'
+import { chinhSuaSinhVienAction } from '../redux/actions/QuanLySinhVienActions'
 
 class DanhSachSinhVien extends Component {
     render() {
@@ -34,7 +35,12 @@ class DanhSachSinhVien extends Component {
                                         {sinhVien.soDienThoai}
                                     </td>
                                     <td>
-                                        <button className="btn btn-warning mr-2">Chỉnh sửa</button>
+                                        <button className="btn btn-warning mr-2" onClick={()=>{
+                                            // dispatch thông tin sinh viên cập nhật lại state.sinhVienSua trên redux
+                                            let action = chinhSuaSinhVienAction(sinhVien);
+                                            // Đưa dữ liệu lên reducer
+                                            this.props.dispatch(action);
+                                        }}>Chỉnh sửa</button>
                                         <button className="btn btn-danger mr-2">Xoá</button>
                                     </td>
                                 </tr>
